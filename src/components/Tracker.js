@@ -3,29 +3,40 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import details from "../data/trakingDetails";
 import axios from "axios";
+import TrackingDetails from "./TrackingDetails";
 
 const Tracker = () => {
   const [input, setInput] = useState();
-  const [detail, setDetail] = useState();
+  const [result, setResult] = useState(null);
   const trackingInput = (e) => {
     setInput(e.target.value);
   };
-  const detail = details.find((d) => d._id === input);
-  const searchId = () => {
-    setDetail(detail);
-    console.log(detail);
+
+  const setDetailsHandler = () => {
+    const detail = details.find((d) => d._id === input);
+    setResult(detail);
   };
 
   return (
     <TrackId>
-      <h1>{detail.name}</h1>
       <input
         onChange={trackingInput}
         type="String"
         placeholder="Input tracking ID"
       />
 
-      <Button onClick={searchId}>Track Now</Button>
+      <Button onClick={setDetailsHandler}>Track Now</Button>
+      {result ? (
+        <TrackingDetails
+          input={input}
+          setInput={setInput}
+          result={result}
+          setResult={setResult}
+          detais={details}
+        />
+      ) : (
+        ""
+      )}
     </TrackId>
   );
 };

@@ -1,20 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 
-const TrackingDetails = () => {
-  return (
+const TrackingDetails = ({ result }) => {
+  return result ? (
     <Details>
       <Date>
-        18 May 2021 <br /> 10:49 AM
+        {result.date} <br /> {result.time}
       </Date>
 
       <Info>
-        Tracking number must contain only capital letters and digits. Please
-        check that tracking number is correct.
+        Your {result.item} was delivered to {result.mode}. It arrived at
+        {result.location} on {result.date} at {result.time} hours.
       </Info>
 
-      <Status>Not Delivered</Status>
+      <Status>Delivered</Status>
     </Details>
+  ) : (
+    ""
   );
 };
 const Details = styled.div`
