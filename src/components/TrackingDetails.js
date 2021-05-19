@@ -9,11 +9,11 @@ const TrackingDetails = ({ result }) => {
       </Date>
 
       <Info>
-        Your {result.item} was delivered to {result.mode}. It arrived at
+        Your {result.item} was delivered to {result.mode}. It arrived at{" "}
         {result.location} on {result.date} at {result.time} hours.
       </Info>
 
-      <Status>Delivered</Status>
+      <Status>Status: Delivered</Status>
     </Details>
   ) : (
     ""

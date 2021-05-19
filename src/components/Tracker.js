@@ -1,22 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import details from "../data/trakingDetails";
-import axios from "axios";
-import TrackingDetails from "./TrackingDetails";
 
-const Tracker = () => {
-  const [input, setInput] = useState();
-  const [result, setResult] = useState(null);
-  const trackingInput = (e) => {
-    setInput(e.target.value);
-  };
-
-  const setDetailsHandler = () => {
-    const detail = details.find((d) => d._id === input);
-    setResult(detail);
-  };
-
+const Tracker = ({ trackingInput, setDetailsHandler }) => {
   return (
     <TrackId>
       <input
@@ -26,17 +11,6 @@ const Tracker = () => {
       />
 
       <Button onClick={setDetailsHandler}>Track Now</Button>
-      {result ? (
-        <TrackingDetails
-          input={input}
-          setInput={setInput}
-          result={result}
-          setResult={setResult}
-          detais={details}
-        />
-      ) : (
-        ""
-      )}
     </TrackId>
   );
 };

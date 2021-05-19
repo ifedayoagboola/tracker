@@ -4,7 +4,7 @@ import { Container } from "../globalStyles";
 import bgimg from "../assets/bgimg2.svg";
 import Tracker from "./Tracker";
 
-const sectionOne = () => {
+const sectionOne = ({ result, trackingInput, setDetailsHandler }) => {
   return (
     <Container>
       <House>
@@ -16,7 +16,11 @@ const sectionOne = () => {
             support logistics tracking of <span>665</span> courier companies
             around the world
           </p>
-          <Tracker />
+          <Tracker
+            result={result}
+            trackingInput={trackingInput}
+            setDetailsHandler={setDetailsHandler}
+          />
         </ContentLeft>
         <ContentRight>
           <img src={bgimg} alt="" />

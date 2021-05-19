@@ -5,7 +5,7 @@ const details = [
     date: "18th May, 2021",
     time: "3:32 PM",
     mode: "Mailbox",
-    location: "nicendsk",
+    location: "Lagos",
   },
   {
     _id: "2",
@@ -13,7 +13,7 @@ const details = [
     date: "20th April, 2021",
     time: "4:32 PM",
     mode: "Doorstep",
-    location: "ncunjcew",
+    location: "USA",
   },
   {
     _id: "3",
@@ -21,7 +21,7 @@ const details = [
     date: "22nd June, 2021",
     time: "05:32 PM",
     mode: "Mailbox",
-    location: "ncunjcew",
+    location: "India",
   },
   {
     _id: "4",
@@ -29,7 +29,7 @@ const details = [
     date: "12th June, 2021",
     time: "12:32 PM",
     mode: "Doorstep",
-    location: "ncunjcew",
+    location: "Ghana",
   },
   {
     _id: "5",
@@ -37,7 +37,7 @@ const details = [
     date: "18th May, 2021",
     time: "3:32 PM",
     mode: "Mailbox",
-    location: "ncunjcew",
+    location: "South Africa",
   },
 ];
 export default details;

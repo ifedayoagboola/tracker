@@ -16,7 +16,7 @@ function App() {
       <Header />
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/detail/:input" component={TrackingDetails} />
+        <Route path="/details" component={TrackingDetails} />
         <Route path="/about" component={SectionTwo} />
         <Route path="/contact" component={SectionThree} />
       </Switch>
