@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Tracker = ({ trackingInput, setDetailsHandler }) => {
+const Tracker = ({ trackingInput, detailsHandler }) => {
   return (
     <TrackId>
       <input
@@ -10,7 +10,7 @@ const Tracker = ({ trackingInput, setDetailsHandler }) => {
         placeholder="Input tracking ID"
       />
 
-      <Button onClick={setDetailsHandler}>Track Now</Button>
+      <Button onClick={detailsHandler}>Track Now</Button>
     </TrackId>
   );
 };

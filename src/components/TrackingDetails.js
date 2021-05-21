@@ -1,22 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 
-const TrackingDetails = ({ result }) => {
-  return result ? (
-    <Details>
-      <Date>
-        {result.date} <br /> {result.time}
-      </Date>
-
-      <Info>
-        Your {result.item} was delivered to {result.mode}. It arrived at{" "}
-        {result.location} on {result.date} at {result.time} hours.
-      </Info>
-
-      <Status>Status: Delivered</Status>
-    </Details>
-  ) : (
-    ""
+const TrackingDetails = ({ errStyle, results, errMsg }) => {
+  console.log(errMsg, "err");
+  return (
+    <>
+      {results ? (
+        results.Events.map((result) => (
+          <>
+            {" "}
+            <Details errStyle={errStyle}>
+              <Date>{result.EventDate}</Date>
+              <Info>{result.Description}</Info>
+              <Status>{result.CurrentPackageStatus}</Status>{" "}
+            </Details>
+          </>
+        ))
+      ) : errMsg ? (
+        <Details errStyle={errStyle}>
+          <p>{errMsg.Message}</p>
+        </Details>
+      ) : (
+        ""
+      )}
+    </>
   );
 };
 const Details = styled.div`
@@ -28,7 +35,9 @@ const Details = styled.div`
   align-items: center;
   gap: 10px;
   background: #f1f5f9;
-  border: 1px solid #0f7173;
+  /* border: 1px solid #0f7173; */
+  border: ${({ errStyle }) =>
+    errStyle ? "1px solid #cf0000" : "1px solid #0f7173"};
   @media (max-width: 768px) {
     flex-direction: column;
   }

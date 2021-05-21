@@ -3,36 +3,48 @@ import SectionOne from "../components/SectionOne";
 import SectionTwo from "../components/SectionTwo";
 import SectionThree from "../components/SectionThree";
 import TrackingDetails from "../components/TrackingDetails";
-import details from "../data/trakingDetails";
+import axios from "axios";
+// import details from "../data/trakingDetails";
 
 const Home = () => {
+  const [results, setResults] = useState(null);
   const [input, setInput] = useState();
-  const [result, setResult] = useState(null);
+  const [errMsg, setErrMsg] = useState();
   const trackingInput = (e) => {
     setInput(e.target.value);
-    console.log(input);
   };
 
-  const setDetailsHandler = () => {
-    const detail = details.find((d) => d._id === input);
-    setResult(detail);
+  const detailsHandler = async () => {
+    // const detail = details.find((d) => d._id === input);
+
+    try {
+      const testApi = await axios.get(
+        `https://admin.movebot.ng/prod_sup/api/LandingPage/Tracker`,
+        {
+          params: {
+            trackingId: `${input}`,
+          },
+        }
+      );
+
+      setResults(testApi.data);
+    } catch (error) {
+      setErrMsg(error.response.data);
+    }
   };
+
   return (
     <>
       <SectionOne
-        result={result}
+        results={results}
         trackingInput={trackingInput}
-        setDetailsHandler={setDetailsHandler}
+        detailsHandler={detailsHandler}
       />
-      {result ? (
-        <TrackingDetails
-          result={result}
-          trackingInput={trackingInput}
-          setDetailsHandler={setDetailsHandler}
-        />
-      ) : (
-        ""
-      )}
+      <TrackingDetails
+        results={results}
+        errMsg={errMsg}
+        trackingInput={trackingInput}
+      />
       <SectionTwo />
       <SectionThree />
     </>
