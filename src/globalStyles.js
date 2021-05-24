@@ -34,7 +34,7 @@ export const Container = styled.div`
     padding: 0 1rem;
   }
 `;
-export const Button = styled.div`
+export const Button = styled.button`
   max-width: 200px;
   text-align: center;
   font-weight: bold;

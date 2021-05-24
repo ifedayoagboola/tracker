@@ -2,14 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 const TrackingDetails = ({ errStyle, results, errMsg }) => {
-  console.log(errMsg, "err");
   return (
     <>
       {results ? (
         results.Events.map((result) => (
           <>
             {" "}
-            <Details errStyle={errStyle}>
+            <Details errStyle={errMsg ? !errStyle : errStyle}>
               <Date>{result.EventDate}</Date>
               <Info>{result.Description}</Info>
               <Status>{result.CurrentPackageStatus}</Status>{" "}
@@ -17,7 +16,7 @@ const TrackingDetails = ({ errStyle, results, errMsg }) => {
           </>
         ))
       ) : errMsg ? (
-        <Details errStyle={errStyle}>
+        <Details errStyle={errMsg ? !errStyle : errStyle}>
           <p>{errMsg.Message}</p>
         </Details>
       ) : (

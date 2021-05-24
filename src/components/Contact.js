@@ -1,8 +1,56 @@
+import axios from "axios";
 import React from "react";
+import { useFormik } from "formik";
 import styled from "styled-components";
 import { Button } from "../globalStyles";
 
+const validate = (values) => {
+  const errors = {};
+
+  if (!values.name) {
+    errors.name = "Name is required";
+  }
+
+  if (!values.emailAddress && !values.phoneNumber) {
+    errors.emailAddress = "Email or Phone number is required";
+    errors.phoneNumber = "Email or Phone number is required";
+  } else if (
+    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.emailAddress)
+  ) {
+    errors.emailAddress = "Invalid email address";
+  }
+  if (!values.message) {
+    errors.message = "message cannot be empty";
+  }
+  return errors;
+};
+
 const Contact = () => {
+  const url = "https://admin.movebot.ng/prod_sup/api/LandingPage/TalkToUs";
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      emailAddress: "",
+      phoneNumber: "",
+      message: "",
+    },
+    validate,
+    onSubmit: (values) => {
+      values = {
+        ...values,
+        countryCode: "NG",
+      };
+      axios
+        .post(url, values)
+        .then((res) => {
+          console.log(res, "sent");
+        })
+        .catch((error) => {
+          console.log(error.response, "failed");
+        });
+      console.log(values);
+    },
+  });
   return (
     <>
       <Form>
@@ -11,19 +59,55 @@ const Contact = () => {
           Do you have anything you want to bring to our notice? We are only some
           texts away. Kindly fiil out the form below to reach out now.
         </p>
-        <form action="">
-          <input type="text" placeholder="Name" />
-          <input type="email" placeholder="Email" />
-          <input type="number" placeholder="Phone" />
+        <form onSubmit={formik.handleSubmit}>
+          <input
+            placeholder="Name"
+            type="text"
+            name="name"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.name}
+          />
+          {formik.touched.name && formik.errors.name ? (
+            <ErrorDiv>{formik.errors.name}</ErrorDiv>
+          ) : null}
+          <input
+            placeholder="Email"
+            type="email"
+            name="emailAddress"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.emailAddress}
+          />
+          {formik.touched.emailAddress && formik.errors.emailAddress ? (
+            <ErrorDiv>{formik.errors.emailAddress}</ErrorDiv>
+          ) : null}
+          <input
+            placeholder="Phone"
+            type="string"
+            name="phoneNumber"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.phoneNumber}
+          />
+          {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
+            <ErrorDiv>{formik.errors.phoneNumber}</ErrorDiv>
+          ) : null}
           <textarea
-            name=""
-            id=""
+            placeholder="Message"
             cols="90"
             rows="3"
-            placeholder="Message"
+            type="text"
+            name="message"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.message}
           ></textarea>
+          {formik.touched.message && formik.errors.message ? (
+            <ErrorDiv>{formik.errors.message}</ErrorDiv>
+          ) : null}
+          <Button type="submit">Send</Button>
         </form>
-        <Button>Send</Button>
       </Form>
     </>
   );
@@ -79,5 +163,9 @@ const Form = styled.div`
       margin-left: 0;
     }
   }
+`;
+const ErrorDiv = styled.div`
+  color: red;
+  text-align: center;
 `;
 export default Contact;
