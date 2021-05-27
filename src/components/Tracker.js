@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-const Tracker = ({ trackingInput, detailsHandler }) => {
+const Tracker = () => {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleSubmit = () => {
+    return (window.location.href = `/${inputValue}`);
+  };
+
   return (
     <TrackId>
-      <input
-        onChange={trackingInput}
-        type="String"
-        placeholder="Input tracking ID"
-      />
-
-      <Button onClick={detailsHandler}>Track Now</Button>
+      <form>
+        <input
+          id="trackingId"
+          name="trackingId"
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+        <Button type="button" onClick={() => handleSubmit()}>
+          Submit
+        </Button>
+      </form>
     </TrackId>
   );
 };
@@ -22,13 +33,14 @@ const TrackId = styled.div`
     border-bottom: 1px solid #f57f55;
   }
 `;
-const Button = styled.div`
+const Button = styled.button`
   text-align: center;
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
   padding: 0.8rem 1.5rem;
   margin: 1rem 0;
+  width: 100%;
   border: 2px solid #f57f55;
   background-color: #f57f55;
   color: white;

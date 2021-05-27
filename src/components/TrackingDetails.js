@@ -1,44 +1,59 @@
 import React from "react";
 import styled from "styled-components";
 
-const TrackingDetails = ({ errStyle, results, errMsg }) => {
+const TrackingDetails = ({ results, fetchErr }) => {
   return (
     <>
       {results ? (
+        <Status>
+          <h3>Status:</h3>
+          {results.CurrentPackageStatus}
+        </Status>
+      ) : (
+        ""
+      )}
+      {results ? (
         results.Events.map((result) => (
           <>
-            {" "}
-            <Details errStyle={errMsg ? !errStyle : errStyle}>
-              <Date>{result.EventDate}</Date>
+            <Response>
+              <Date>{result.EventDate_}</Date>
               <Info>{result.Description}</Info>
-              <Status>{result.CurrentPackageStatus}</Status>{" "}
-            </Details>
+              <Status>{result.CurrentPackageStatus}</Status>
+            </Response>
           </>
         ))
-      ) : errMsg ? (
-        <Details errStyle={errMsg ? !errStyle : errStyle}>
-          <p>{errMsg.Message}</p>
-        </Details>
+      ) : fetchErr ? (
+        <Response errStyle={true}>
+          <p>{fetchErr}</p>
+        </Response>
       ) : (
         ""
       )}
     </>
   );
 };
-const Details = styled.div`
+
+const Response = styled.div`
   min-height: 80px;
-  width: 90%;
+  width: 100%;
   margin: auto;
   display: flex;
-  justify-content: center;
+  justify-content: ${({ errStyle }) => (errStyle ? "center" : "left")};
   align-items: center;
   gap: 10px;
-  background: #f1f5f9;
-  /* border: 1px solid #0f7173; */
+  background: ${({ errStyle }) => (errStyle ? "" : "#0F7173")};
   border: ${({ errStyle }) =>
-    errStyle ? "1px solid #cf0000" : "1px solid #0f7173"};
+    errStyle ? "2px solid #cf0000" : "1px solid #fff"};
+  color: ${({ errStyle }) => (errStyle ? "#0F7173" : "#fff")};
+  text-align: left;
+  p {
+    padding: 1rem;
+  }
+
   @media (max-width: 768px) {
     flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
   }
 `;
 
@@ -49,6 +64,11 @@ const Info = styled.div`
   padding: 1rem;
 `;
 const Status = styled.div`
-  padding: 1rem;
+  width: 90%;
+  margin: 1rem 0;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: #0f7173;
 `;
 export default TrackingDetails;

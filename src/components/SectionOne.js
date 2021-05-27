@@ -4,7 +4,14 @@ import { Container } from "../globalStyles";
 import bgimg from "../assets/bgimg2.svg";
 import Tracker from "./Tracker";
 
-const sectionOne = ({ results, trackingInput, detailsHandler }) => {
+const sectionOne = ({
+  setErrMsg,
+  setResults,
+  setIdValues,
+  idValues,
+  trackingInput,
+  detailsHandler,
+}) => {
   return (
     <Container>
       <House>
@@ -17,7 +24,8 @@ const sectionOne = ({ results, trackingInput, detailsHandler }) => {
             around the world
           </p>
           <Tracker
-            results={results}
+            setResults={setResults}
+            setErrMsg={setErrMsg}
             trackingInput={trackingInput}
             detailsHandler={detailsHandler}
           />

@@ -35,13 +35,15 @@ export const Container = styled.div`
   }
 `;
 export const Button = styled.button`
-  max-width: 200px;
+  width: 160px;
   text-align: center;
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
   padding: 0.7rem 1.5rem;
   margin: 1rem 0;
+  border: none;
+  outline: none;
   background-color: #f57f55;
   color: white;
   transition: all 0.5s ease;

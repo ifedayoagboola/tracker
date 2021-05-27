@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Subscribe from "../components/Subscribe";
 import Contact from "../components/Contact";
 
 const SectionThree = () => {
+  const [successRes, setSuccessRes] = useState(false);
+  const [errorRes, setErrorRes] = useState(false);
+
   return (
     <Section3>
       <Subscribe />
-      <Contact />
+      <Contact
+        successRes={successRes}
+        errorRes={errorRes}
+        setsuccessRes={setSuccessRes}
+        setErrorRes={setErrorRes}
+      />
     </Section3>
   );
 };

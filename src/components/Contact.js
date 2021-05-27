@@ -1,9 +1,9 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import styled from "styled-components";
 import { Button } from "../globalStyles";
-
+import Modal from "../components/Modal";
 const validate = (values) => {
   const errors = {};
 
@@ -27,6 +27,8 @@ const validate = (values) => {
 
 const Contact = () => {
   const url = "https://admin.movebot.ng/prod_sup/api/LandingPage/TalkToUs";
+  const [errorRes, setErrorRes] = useState();
+  const [successRes, setSuccessRes] = useState();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -43,17 +45,24 @@ const Contact = () => {
       axios
         .post(url, values)
         .then((res) => {
-          console.log(res, "sent");
+          setSuccessRes(res.data);
         })
         .catch((error) => {
-          console.log(error.response, "failed");
+          setErrorRes(error.response.data.Message);
+          // console.log(error.response.data.Message);
         });
-      console.log(values);
     },
   });
   return (
     <>
       <Form>
+        {successRes ? (
+          <Modal successRes={successRes} />
+        ) : errorRes ? (
+          <Modal errorRes={errorRes} />
+        ) : (
+          ""
+        )}
         <h2>Talk to us</h2>
         <p>
           Do you have anything you want to bring to our notice? We are only some
