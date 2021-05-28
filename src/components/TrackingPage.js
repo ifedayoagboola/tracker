@@ -47,6 +47,7 @@ const House = styled.div`
     align-items: center;
     gap: 1px;
     width: 100%;
+    padding: 0;
   }
 `;
 const RightContent = styled.div`

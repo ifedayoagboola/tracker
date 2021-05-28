@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import gp1 from "../assets/gp1.png";
-import as1 from "../assets/as1.png";
 import { Link } from "react-router-dom";
 const Subscribe = () => {
   return (
@@ -12,9 +11,11 @@ const Subscribe = () => {
         <Download>
           <Image to="/">
             <img src={gp1} alt="" />
+            <h3>Drivers App</h3>
           </Image>
           <Image to="/">
-            <img src={as1} alt="" />
+            <img src={gp1} alt="" />
+            <h3>Customers App</h3>
           </Image>
         </Download>
       </Subscription>
@@ -45,6 +46,9 @@ const Download = styled.div`
 `;
 const Image = styled(Link)`
   width: 10rem;
+  h3 {
+    color: #0f7173;
+  }
   &:hover {
     transform: scale(0.97);
     transition: all 0.5s ease;

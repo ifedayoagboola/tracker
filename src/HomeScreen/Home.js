@@ -20,7 +20,7 @@ const Home = ({
         setErrMsg={setErrMsg}
         setResults={setResults}
       />
-      <TrackingDetails results={results} errMsg={errMsg} />
+      {/* <TrackingDetails results={results} errMsg={errMsg} /> */}
       <SectionTwo />
       <SectionThree />
     </>

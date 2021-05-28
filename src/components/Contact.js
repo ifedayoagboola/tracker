@@ -4,6 +4,9 @@ import { useFormik } from "formik";
 import styled from "styled-components";
 import { Button } from "../globalStyles";
 import Modal from "../components/Modal";
+import { css } from "@emotion/react";
+import ClipLoader from "react-spinners/ClipLoader";
+
 const validate = (values) => {
   const errors = {};
 
@@ -11,13 +14,15 @@ const validate = (values) => {
     errors.name = "Name is required";
   }
 
-  if (!values.emailAddress && !values.phoneNumber) {
-    errors.emailAddress = "Email or Phone number is required";
-    errors.phoneNumber = "Email or Phone number is required";
+  if (!values.emailAddress) {
+    errors.emailAddress = "Email is required";
   } else if (
     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.emailAddress)
   ) {
     errors.emailAddress = "Invalid email address";
+  }
+  if (!values.phoneNumber) {
+    errors.phoneNumber = "Phone number is required";
   }
   if (!values.message) {
     errors.message = "message cannot be empty";
@@ -29,6 +34,8 @@ const Contact = () => {
   const url = "https://admin.movebot.ng/prod_sup/api/LandingPage/TalkToUs";
   const [errorRes, setErrorRes] = useState();
   const [successRes, setSuccessRes] = useState();
+  const [loading, setLoading] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -42,6 +49,7 @@ const Contact = () => {
         ...values,
         countryCode: "NG",
       };
+      setLoading(true);
       axios
         .post(url, values)
         .then((res) => {
@@ -51,6 +59,7 @@ const Contact = () => {
           setErrorRes(error.response.data.Message);
           // console.log(error.response.data.Message);
         });
+      setLoading(false);
     },
   });
   return (
@@ -115,12 +124,14 @@ const Contact = () => {
           {formik.touched.message && formik.errors.message ? (
             <ErrorDiv>{formik.errors.message}</ErrorDiv>
           ) : null}
+
           <Button type="submit">Send</Button>
         </form>
       </Form>
     </>
   );
 };
+
 const Form = styled.div`
   flex: 1;
   overflow: hidden;

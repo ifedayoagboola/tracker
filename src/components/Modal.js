@@ -18,6 +18,7 @@ const Modal = ({ errorRes, successRes }) => {
 };
 const Feed = styled.div`
   max-height: 150px;
+  padding: 1.5rem;
   width: 100%;
   background: ${({ errStyle }) => (errStyle ? "#F57F55" : "#0F7173")};
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);

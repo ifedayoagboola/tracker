@@ -5,7 +5,7 @@ const Tracker = () => {
   const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = () => {
-    return (window.location.href = `/${inputValue}`);
+    return (window.location.href = `/details/${inputValue}`);
   };
 
   return (

@@ -6,6 +6,7 @@ import Home from "./HomeScreen/Home";
 import SectionTwo from "./components/SectionTwo";
 import SectionThree from "./components/SectionThree";
 import TrackingPage from "./components/TrackingPage";
+import Partnership from "./components/Partnership";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -27,7 +28,9 @@ function App() {
             setErrMsg={setErrMsg}
           />
         </Route>
-        <Route path="/:idDetails" component={TrackingPage} />
+
+        <Route path="/details/:idDetails" component={TrackingPage} />
+        <Route path="/partners" component={Partnership} />
         <Route path="/about" component={SectionTwo} />
         <Route path="/contact" component={SectionThree} />
       </Switch>

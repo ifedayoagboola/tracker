@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const SectionTwo = () => {
   return (
@@ -7,13 +8,17 @@ const SectionTwo = () => {
       <House>
         <InfoColumn2>
           <Info2>
-            <h3>MoveBot </h3>
+            <Link to="/">
+              <h3>MoveBot </h3>
+            </Link>
             Movebot empowers couriers and their clients with 24/7 digital
             tracking and delivery platforms to reduce the cost and stress of
             parcel and cargo transportation.
           </Info2>
           <Info2>
-            <h3>Our Vision</h3>
+            <Link to="/">
+              <h3>Our vision</h3>
+            </Link>
             The vision is to enable the stakeholders to deliver all items smart,
             track all easy and simple and spend less resources(e.g money, time
             and energy) on goods transportation.
@@ -21,20 +26,26 @@ const SectionTwo = () => {
         </InfoColumn2>
         <InfoColumn3>
           <Info2>
-            <h3>Manage dispatch orders</h3>
+            <Link to="/">
+              <h3>Manage dispatch orders </h3>
+            </Link>
             Are you a courier company with the plan to achieve the business
             goals below? Deliver more and fast Delight and retain your clients.
+            <br /> <br />
             Connect easy with new clients Manage dispatch orders/drivers Track
             items realtime & more…
           </Info2>
           <Info2>
-            <h3>Track Parcels</h3>
+            <Link to="/details/:idDetails">
+              <h3>Track parcels </h3>
+            </Link>
             Track all parcels from pick up to drop off anytime and anywhere-
-            Simple and easy Box: Enter your tracking number here Send
-            parcel/cargo Deliver your parcels/cargo smart and track all with
-            less resources when you use movebot More about us We are trusted by
-            and empowering couriers and their clients such as: Few Logos of
-            customers and more…
+            Simple and easy Box:
+            <br /> <br />
+            Enter your tracking number here Send parcel/cargo Deliver your
+            parcels/cargo smart and track all with less resources when you use
+            movebot More about us We are trusted by and empowering couriers and
+            their clients such as: Few Logos of customers and more…
           </Info2>
         </InfoColumn3>
       </House>

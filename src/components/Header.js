@@ -58,13 +58,13 @@ function Header() {
 
               <NavItemBtn>
                 {button ? (
-                  <NavBtnLink to="/contact">
-                    <Button>Download App</Button>
+                  <NavBtnLink to="/partners">
+                    <Button>Partnership</Button>
                   </NavBtnLink>
                 ) : (
-                  <NavBtnLink to="/contact">
+                  <NavBtnLink to="/partners">
                     <Button onClick={closeMobileMenu} fontBig primary>
-                      Download App
+                      Partnership
                     </Button>
                   </NavBtnLink>
                 )}
