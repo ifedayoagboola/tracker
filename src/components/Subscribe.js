@@ -7,7 +7,7 @@ const Subscribe = () => {
     <>
       <Subscription>
         <h2>Download MoveBot App</h2>
-        <p>Click below to download Mobile Application for Android or IOS.</p>
+        <p>Click below to download Mobile Apps</p>
         <Download>
           <Image to="/">
             <img src={gp1} alt="" />

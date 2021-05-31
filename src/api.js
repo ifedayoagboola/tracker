@@ -1,5 +1,8 @@
-const base_url = "https://admin.movebot.ng/prod_sup/api/LandingPage/Tracker";
-export const prod_url =
-  "https://admin.movebot.ng/prod_sup/api/LandingPage/Tracker";
-export const test_url =
-  "https://admin.movebot.ng/prod_sup/api/LandingPage/Tracker";
+const base_url = (ENV) => {
+  if (ENV === "PROD") {
+    return "https://admin.movebot.ng/api";
+  } else if (ENV === "DEV") {
+    return "https://admin.movebot.ng/prod_sup/api";
+  }
+};
+export default base_url("DEV");

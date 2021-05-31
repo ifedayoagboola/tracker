@@ -18,6 +18,7 @@ font-size: 1.2rem;
 ::placeholder{
     font-size: 0.9rem;
 }
+
 }
 h1, h2, p{
     color: #000D1A;

@@ -36,6 +36,7 @@ const TrackingPage = (props) => {
   );
 };
 const House = styled.div`
+  position: relative;
   display: flex;
   gap: 30px;
   justify-content: center;

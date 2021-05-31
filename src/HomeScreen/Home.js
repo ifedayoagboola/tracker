@@ -1,17 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import SectionOne from "../components/SectionOne";
 import SectionTwo from "../components/SectionTwo";
 import SectionThree from "../components/SectionThree";
-import TrackingDetails from "../components/TrackingDetails";
+// import Partnership from "../components/Partnership";
 
-const Home = ({
-  setIdValues,
-  idValues,
-  errMsg,
-  setErrMsg,
-  results,
-  setResults,
-}) => {
+const Home = ({ setIdValues, idValues, setErrMsg, setResults }) => {
   return (
     <>
       <SectionOne
@@ -20,8 +13,9 @@ const Home = ({
         setErrMsg={setErrMsg}
         setResults={setResults}
       />
-      {/* <TrackingDetails results={results} errMsg={errMsg} /> */}
+
       <SectionTwo />
+      {/* <Partnership /> */}
       <SectionThree />
     </>
   );

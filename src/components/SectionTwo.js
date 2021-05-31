@@ -9,11 +9,12 @@ const SectionTwo = () => {
         <InfoColumn2>
           <Info2>
             <Link to="/">
-              <h3>MoveBot </h3>
+              <h3>About us</h3>
             </Link>
             Movebot empowers couriers and their clients with 24/7 digital
             tracking and delivery platforms to reduce the cost and stress of
-            parcel and cargo transportation.
+            parcel and cargo transportation. <br />
+            <br />
           </Info2>
           <Info2>
             <Link to="/">
@@ -27,25 +28,46 @@ const SectionTwo = () => {
         <InfoColumn3>
           <Info2>
             <Link to="/">
-              <h3>Manage dispatch orders </h3>
+              <h3>
+                Courier companies with the plan to achieve the business goals
+                below:
+              </h3>
             </Link>
-            Are you a courier company with the plan to achieve the business
-            goals below? Deliver more and fast Delight and retain your clients.
-            <br /> <br />
-            Connect easy with new clients Manage dispatch orders/drivers Track
-            items realtime & more…
+            <ul>
+              <li>Deliver more and fast.</li>
+              <li>Delight and retain your clients.</li>
+              <li>Connect easy with new clients</li>
+              <li>Manage dispatch orders/drivers</li>
+              <li>Track items realtime & more…</li>
+            </ul>
+            <br />
+            <p>
+              They are achievable with Movebot.
+              <Link to="partners"> Talk to us</Link> to get started
+            </p>
           </Info2>
           <Info2>
             <Link to="/details/:idDetails">
-              <h3>Track parcels </h3>
+              <h3>Client of courier companies with the goals below:</h3>
             </Link>
-            Track all parcels from pick up to drop off anytime and anywhere-
-            Simple and easy Box:
-            <br /> <br />
-            Enter your tracking number here Send parcel/cargo Deliver your
-            parcels/cargo smart and track all with less resources when you use
-            movebot More about us We are trusted by and empowering couriers and
-            their clients such as: Few Logos of customers and more…
+            <ul>
+              <li>
+                See how your parcel/cargo move from pick up point to drop off
+                point.
+              </li>
+              <li>Remove anxiety over parcel/cargo in transit.</li>
+              <li>
+                Save cost, time and energy spent on parcel/cargo delivery.
+              </li>
+              <li>
+                Bargain and agree on the delivery terms with couriers of choice.
+              </li>
+            </ul>
+            <br />
+            <p>
+              They are achievable with Movebot.
+              <Link to="/contact"> Download app </Link> to get started.
+            </p>
           </Info2>
         </InfoColumn3>
       </House>
@@ -91,6 +113,15 @@ const Info2 = styled.div`
   padding: 2rem 2rem 2rem 1rem;
   margin-bottom: 1rem;
   h3 {
+    color: #0f7173;
+  }
+  ul {
+    padding-left: 1rem;
+    li {
+      color: #101522;
+    }
+  }
+  a {
     color: #0f7173;
   }
 `;

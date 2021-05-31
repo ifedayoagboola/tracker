@@ -12,6 +12,7 @@ const Tracker = () => {
     <TrackId>
       <form>
         <input
+          placeholder="enter tracking ID"
           id="trackingId"
           name="trackingId"
           type="text"
@@ -19,7 +20,7 @@ const Tracker = () => {
           onChange={(e) => setInputValue(e.target.value)}
         />
         <Button type="button" onClick={() => handleSubmit()}>
-          Submit
+          Track Now
         </Button>
       </form>
     </TrackId>

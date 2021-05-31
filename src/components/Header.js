@@ -6,6 +6,7 @@ import logo from "../assets/Logo.svg";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Container } from "../globalStyles";
+import { FiPackage } from "react-icons/fi";
 
 function Header() {
   const [click, setClick] = useState(false);
@@ -55,11 +56,16 @@ function Header() {
                   Contact
                 </NavLinks>
               </NavItem>
+              <NavItem>
+                <NavLinks to="/contact" onClick={closeMobileMenu}>
+                  <FiPackage /> Courier Portal
+                </NavLinks>
+              </NavItem>
 
               <NavItemBtn>
                 {button ? (
                   <NavBtnLink to="/partners">
-                    <Button>Partnership</Button>
+                    <Button>Become a Courier Partner</Button>
                   </NavBtnLink>
                 ) : (
                   <NavBtnLink to="/partners">

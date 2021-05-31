@@ -17,12 +17,13 @@ const sectionOne = ({
       <House>
         <ContentLeft>
           <h1>
-            World’s Leading <span>Logistics</span> Information Query Solution
+            Tracking and delivery management software trusted by courier
+            companies/experts and their clients
           </h1>
-          <p>
-            support logistics tracking of <span>665</span> courier companies
-            around the world
-          </p>
+          {/* <p>
+            Tracking and delivery management software trusted by courier
+            companies/experts and their clients
+          </p> */}
           <Tracker
             setResults={setResults}
             setErrMsg={setErrMsg}
@@ -52,7 +53,7 @@ const House = styled.div`
 const ContentLeft = styled.div`
   flex: 1;
   h1 {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     color: #0f7173;
   }
   p {

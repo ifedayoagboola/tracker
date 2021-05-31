@@ -7,12 +7,13 @@ import SectionTwo from "./components/SectionTwo";
 import SectionThree from "./components/SectionThree";
 import TrackingPage from "./components/TrackingPage";
 import Partnership from "./components/Partnership";
+import Toc from "./components/Toc";
+import Privacy from "./components/Privacy";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   const [errMsg, setErrMsg] = useState();
-  const [results, setResults] = useState();
   const [idValues, setIdValues] = useState();
   return (
     <Router>
@@ -23,7 +24,6 @@ function App() {
           <Home
             idValues={idValues}
             setIdValues={setIdValues}
-            results={results}
             errMsg={errMsg}
             setErrMsg={setErrMsg}
           />
@@ -33,6 +33,8 @@ function App() {
         <Route path="/partners" component={Partnership} />
         <Route path="/about" component={SectionTwo} />
         <Route path="/contact" component={SectionThree} />
+        <Route path="/toc" component={Toc} />
+        <Route path="/privacy" component={Privacy} />
       </Switch>
       <Footer />
     </Router>

@@ -6,6 +6,7 @@ import { Button } from "../globalStyles";
 import Modal from "../components/Modal";
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
+import base_url from "../api";
 
 const validate = (values) => {
   const errors = {};
@@ -31,9 +32,9 @@ const validate = (values) => {
 };
 
 const Contact = () => {
-  const url = "https://admin.movebot.ng/prod_sup/api/LandingPage/TalkToUs";
-  const [errorRes, setErrorRes] = useState();
-  const [successRes, setSuccessRes] = useState();
+  const url = `${base_url}/LandingPage/TalkToUs`;
+  const [res, setRes] = useState(null);
+  const [err, setErr] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
@@ -49,29 +50,28 @@ const Contact = () => {
         ...values,
         countryCode: "NG",
       };
+      // alert(JSON.stringify(values, null, 2));
       setLoading(true);
+      setErr(false);
       axios
         .post(url, values)
         .then((res) => {
-          setSuccessRes(res.data);
+          setRes(res.data.Message);
+          setLoading(false);
         })
         .catch((error) => {
-          setErrorRes(error.response.data.Message);
-          // console.log(error.response.data.Message);
+          setRes(error.response.data.Message);
+          setErr(true);
+          setLoading(false);
         });
-      setLoading(false);
     },
   });
+  // console.log(errRes);
   return (
     <>
       <Form>
-        {successRes ? (
-          <Modal successRes={successRes} />
-        ) : errorRes ? (
-          <Modal errorRes={errorRes} />
-        ) : (
-          ""
-        )}
+        {res && <Modal res={res} iserror={err} />}
+
         <h2>Talk to us</h2>
         <p>
           Do you have anything you want to bring to our notice? We are only some
@@ -124,7 +124,13 @@ const Contact = () => {
           {formik.touched.message && formik.errors.message ? (
             <ErrorDiv>{formik.errors.message}</ErrorDiv>
           ) : null}
-
+          {loading ? (
+            <Loader>
+              <ClipLoader css={override} color={"#F57F55"} size={80} />
+            </Loader>
+          ) : (
+            ""
+          )}
           <Button type="submit">Send</Button>
         </form>
       </Form>
@@ -133,6 +139,7 @@ const Contact = () => {
 };
 
 const Form = styled.div`
+  position: relative;
   flex: 1;
   overflow: hidden;
   z-index: 100;
@@ -187,5 +194,20 @@ const Form = styled.div`
 const ErrorDiv = styled.div`
   color: red;
   text-align: center;
+`;
+const Loader = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 13, 26, 0.8);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+const override = css`
+  border-color: #f57f55;
 `;
 export default Contact;

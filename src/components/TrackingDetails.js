@@ -30,14 +30,30 @@ const TrackingDetails = ({ results, fetchErr }) => {
           <p>{fetchErr}</p>
         </Response>
       ) : (
-        <ClipLoader css={override} color={"#F57F55"} loading={true} size={80} />
+        <Loader>
+          <ClipLoader
+            css={override}
+            color={"#F57F55"}
+            loading={true}
+            size={80}
+          />
+        </Loader>
       )}
     </>
   );
 };
+const Loader = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 13, 26, 0.8);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 const override = css`
-  display: block;
-  margin: 50px auto 0;
   border-color: #f57f55;
 `;
 const Response = styled.div`
